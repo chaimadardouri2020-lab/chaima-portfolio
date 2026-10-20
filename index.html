@@ -1,0 +1,457 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Chaima Dardouri</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: a data-pipeline portfolio. Hero shows the ingest -> model -> serve -> decide path she owns end to end; content sections follow in working order. */
+:root{
+  --bg:#F2F5F7;
+  --surface:#FFFFFF;
+  --ink:#0F1D2B;
+  --muted:#54677A;
+  --line:#D5DDE4;
+  --accent:#0A6C74;
+  --accent-soft:#DDF0F1;
+  --accent-ink:#FFFFFF;
+  --font-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C151D;--surface:#12202B;--ink:#E6EDF2;--muted:#93A5B5;--line:#223341;
+    --accent:#4CC3C9;--accent-soft:#123A40;--accent-ink:#06222A;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C151D;--surface:#12202B;--ink:#E6EDF2;--muted:#93A5B5;--line:#223341;
+  --accent:#4CC3C9;--accent-soft:#123A40;--accent-ink:#06222A;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{font-family:var(--font-display);font-weight:700;font-size:1.05rem;text-decoration:none;letter-spacing:.01em}
+nav.menu{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+nav.menu a{font-size:.85rem;text-decoration:none;color:var(--muted);padding:6px 10px;border-radius:4px}
+nav.menu a:hover{color:var(--ink);background:var(--accent-soft)}
+
+/* hero */
+.hero{padding-block:56px 48px;display:grid;gap:40px}
+.eyebrow{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.4rem,7vw,4.4rem);line-height:1.02;letter-spacing:-.02em;margin:10px 0 0;text-wrap:balance}
+.role{font-family:var(--font-display);font-weight:500;font-size:clamp(1.1rem,2.6vw,1.5rem);color:var(--muted);margin:14px 0 0}
+.pitch{max-width:62ch;margin:22px 0 0;font-size:1.08rem}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:500 .95rem var(--font-body);text-decoration:none;padding:11px 18px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+
+.pipe{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:6px;background:var(--surface);overflow:hidden}
+.pipe .stage{padding:18px 18px 20px;min-width:0;position:relative}
+.pipe .stage+.stage{border-left:1px solid var(--line)}
+.pipe .stage+.stage::before{content:"\2192";position:absolute;left:-10px;top:18px;width:20px;height:20px;line-height:18px;text-align:center;background:var(--surface);color:var(--accent);font-size:.95rem;border-radius:50%}
+.stage .k{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.stage h3{font-family:var(--font-display);font-size:1.15rem;margin:6px 0 6px}
+.stage p{margin:0;font-size:.88rem;color:var(--muted)}
+.stage .tools{margin-top:12px;font-family:var(--font-mono);font-size:.74rem;color:var(--ink);line-height:1.7}
+
+/* sections */
+section{padding-block:56px;border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:6px;margin-bottom:32px}
+h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,4vw,2.3rem);letter-spacing:-.01em;margin:0;text-wrap:balance}
+.sec-head p{margin:0;color:var(--muted);max-width:60ch}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px}
+.about p{margin:0 0 16px;max-width:64ch}
+.facts{display:grid;gap:0;align-content:start;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.facts div{display:flex;justify-content:space-between;gap:16px;padding:12px 16px;font-size:.92rem;min-width:0}
+.facts div+div{border-top:1px solid var(--line)}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0;text-align:right;font-weight:500}
+dl.facts{margin:0}
+
+/* experience */
+.job{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 32px;padding-block:24px;border-top:1px solid var(--line)}
+.job:first-of-type{border-top:0;padding-top:0}
+.job .when{font-family:var(--font-mono);font-size:.82rem;color:var(--muted)}
+.job h3{font-family:var(--font-display);font-size:1.25rem;margin:0}
+.job .org{color:var(--accent);font-weight:500;margin:2px 0 10px}
+.job ul{margin:0;padding-left:1.1em;max-width:66ch}
+.job li{margin-bottom:6px}
+
+/* projects */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.chip{font:500 .85rem var(--font-body);padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.feature{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:28px;margin-bottom:20px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px}
+.feature h3{font-family:var(--font-display);font-size:1.6rem;margin:6px 0 10px;line-height:1.15}
+.feature p{margin:0 0 12px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tag{font-family:var(--font-mono);font-size:.72rem;padding:3px 8px;border-radius:3px;background:var(--accent-soft);color:var(--ink)}
+.flow{display:grid;gap:0;align-content:center;min-width:0}
+.flow .step{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;padding-bottom:16px;position:relative}
+.flow .step:not(:last-child)::after{content:"";position:absolute;left:14px;top:30px;bottom:2px;width:1px;background:var(--line)}
+.flow .dot{width:29px;height:29px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font-family:var(--font-mono);font-size:.75rem;display:grid;place-items:center;background:var(--surface)}
+.flow b{display:block;font-weight:600;font-size:.95rem}
+.flow span{font-size:.85rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:20px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.card[hidden]{display:none!important}
+.card .cat{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.card h3{font-family:var(--font-display);font-size:1.1rem;margin:0;line-height:1.25}
+.card p{margin:0;font-size:.9rem;color:var(--muted);flex:1}
+.card .tags{margin-top:6px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.skills>div{padding:22px;min-width:0;border-top:1px solid var(--line)}
+.skills h3{font-family:var(--font-display);font-size:1rem;margin:0 0 12px}
+.skills ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.skills li{font-size:.85rem;padding:4px 10px;border:1px solid var(--line);border-radius:4px}
+
+/* education + certs */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px}
+.two h3{font-family:var(--font-display);font-size:1.1rem;margin:0 0 16px}
+.entry{padding-block:14px;border-top:1px solid var(--line)}
+.entry:first-of-type{border-top:0;padding-top:0}
+.entry b{display:block;font-weight:600}
+.entry span{font-size:.88rem;color:var(--muted)}
+
+/* contact */
+.contact{display:grid;gap:24px}
+.addr{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.addr code{font-family:var(--font-mono);font-size:1rem;padding:10px 14px;border:1px solid var(--line);border-radius:6px;background:var(--surface);user-select:all;word-break:break-all}
+.links{display:flex;gap:12px;flex-wrap:wrap}
+footer{padding-block:32px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+
+@media (max-width:820px){
+  .pipe{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pipe .stage:nth-child(3){border-left:0}
+  .pipe .stage:nth-child(n+3){border-top:1px solid var(--line)}
+  .pipe .stage:nth-child(3)::before{display:none}
+  .about,.feature{grid-template-columns:minmax(0,1fr)}
+  .job{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:520px){
+  .pipe{grid-template-columns:minmax(0,1fr)}
+  .pipe .stage+.stage{border-left:0;border-top:1px solid var(--line)}
+  .pipe .stage+.stage::before{content:"\2193";left:18px;top:-10px}
+  .pipe .stage:nth-child(3)::before{display:block}
+  nav.menu a{padding:6px 8px}
+  .feature{padding:20px}
+  .hero{padding-block:36px 32px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Chaima Dardouri</a>
+    <nav class="menu" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Portfolio &middot; Hammamet, Tunisia</div>
+      <h1>Chaima Dardouri</h1>
+      <p class="role">Data Engineer in Business Intelligence and Generative AI</p>
+      <p class="pitch">I build the path from raw data to a decision: ETL pipelines, star-schema models, dashboards, and AI assistants that let non-technical teams ask questions in plain language. I take projects from ingestion to delivery on my own.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">View projects</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="pipe" aria-label="How I work, from data ingestion to decision support">
+      <div class="stage">
+        <div class="k">Ingest</div>
+        <h3>Collect and clean</h3>
+        <p>Automated pipelines replace manual processing.</p>
+        <div class="tools">SQL &middot; Python &middot; Pandas<br>Apache Airflow</div>
+      </div>
+      <div class="stage">
+        <div class="k">Model</div>
+        <h3>Structure for analysis</h3>
+        <p>Star schemas and warehouses built for reporting.</p>
+        <div class="tools">Data modeling<br>PostgreSQL &middot; MongoDB</div>
+      </div>
+      <div class="stage">
+        <div class="k">Serve</div>
+        <h3>Deliver insight</h3>
+        <p>Dashboards and APIs that teams use every month.</p>
+        <div class="tools">Power BI &middot; DAX<br>FastAPI &middot; React</div>
+      </div>
+      <div class="stage">
+        <div class="k">Decide</div>
+        <h3>Add intelligence</h3>
+        <p>Natural-language queries and anomaly detection.</p>
+        <div class="tools">LLM &middot; RAG<br>Scikit-learn</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="sec-head"><h2>About</h2></div>
+    <div class="about">
+      <div>
+        <p>I am a Data Engineer in training, specializing in Business Intelligence and Generative AI. My work covers ETL pipelines, data modeling and AI-augmented analytics platforms.</p>
+        <p>I am comfortable owning a project end to end, from data ingestion to decision-support delivery. At Wedata Consult I delivered Power BI dashboards used in monthly management reviews, and as a freelancer I shipped a full-stack expense tracking application to the cloud.</p>
+        <p>I am currently completing an engineering degree in Computer Science with a BI specialization.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Based in</dt><dd>Hammamet, Tunisia</dd></div>
+        <div><dt>Studying</dt><dd>Engineering degree, BI</dd></div>
+        <div><dt>School</dt><dd>ITBS, Mrezga</dd></div>
+        <div><dt>Languages</dt><dd>Arabic, French, English</dd></div>
+        <div><dt>Focus</dt><dd>BI, data engineering, GenAI</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head">
+      <h2>Experience</h2>
+      <p>From web development internships to BI delivery and independent full-stack work.</p>
+    </div>
+
+    <article class="job">
+      <div class="when">Jun &ndash; Aug 2026</div>
+      <div>
+        <h3>Freelance Full-Stack Developer</h3>
+        <div class="org">Independent</div>
+        <ul>
+          <li>Designed, developed and deployed a responsive web application for expense and invoice tracking, with React or Angular on the frontend and Node.js on the backend.</li>
+          <li>Modeled and integrated a MongoDB database and deployed the application on cloud hosting (Vercel, Netlify, Render), delivering the project end to end.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="when">Jan &ndash; May 2026</div>
+      <div>
+        <h3>Junior Data and BI Engineer</h3>
+        <div class="org">Wedata Consult, Sousse</div>
+        <ul>
+          <li>Delivered 6 interactive Power BI dashboards (DAX, drill-down, cross-filtering) covering KPIs for 8 departments, used as a reference in monthly management reviews.</li>
+          <li>Automated ETL pipelines in SQL and Python/Pandas and modeled star-schema datasets for 3 internal teams, removing manual processing and improving reporting reliability.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="when">Oct 2024 &ndash; Jul 2025</div>
+      <div>
+        <h3>Data and CRM Operations Assistant</h3>
+        <div class="org">B2C Delivery, Hammamet</div>
+        <ul>
+          <li>Structured and tracked 300+ weekly orders through a CRM-oriented ERP, maintaining customer data quality and producing recurring operational reports.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="when">Feb &ndash; May 2024</div>
+      <div>
+        <h3>Full-Stack Development Intern</h3>
+        <div class="org">Web To Code</div>
+        <ul>
+          <li>Built a Laravel web application for digital business cards with QR code generation, CSV import and a printing interface, exposed through REST APIs.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="when">Jul &ndash; Aug 2023</div>
+      <div>
+        <h3>Web Development Intern</h3>
+        <div class="org">Laboratoires M&eacute;dis</div>
+        <ul>
+          <li>Developed an internal Laravel application for equipment failure detection, with automatic email alerts to technical teams.</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head">
+      <h2>Projects</h2>
+      <p>Academic and personal work across business intelligence, machine learning and software engineering.</p>
+    </div>
+
+    <article class="feature">
+      <div>
+        <div class="eyebrow">Featured &middot; Academic project, ITBS</div>
+        <h3>GenBI Assistant</h3>
+        <p>An AI-augmented BI platform that lets non-technical users query enterprise data in natural language. An LLM-based NL2SQL engine reads the database schema through retrieval, then validates its own queries and corrects errors automatically.</p>
+        <p>Behind it sits a star-schema data warehouse and an ETL pipeline, with automatic chart generation, role-based access control and proactive anomaly detection on key indicators.</p>
+        <div class="tags">
+          <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">LangChain</span><span class="tag">RAG</span><span class="tag">LLM</span><span class="tag">PostgreSQL</span><span class="tag">Airflow</span><span class="tag">Docker</span><span class="tag">JWT / RBAC</span>
+        </div>
+      </div>
+      <div class="flow" aria-label="How a question becomes a chart">
+        <div class="step"><div class="dot">1</div><div><b>User asks a question</b><span>Plain language, no SQL needed.</span></div></div>
+        <div class="step"><div class="dot">2</div><div><b>Schema retrieval (RAG)</b><span>The model reads the relevant parts of the warehouse schema.</span></div></div>
+        <div class="step"><div class="dot">3</div><div><b>NL2SQL generation</b><span>An LLM writes the query.</span></div></div>
+        <div class="step"><div class="dot">4</div><div><b>Validation and correction</b><span>Errors feed back into the model until the query runs.</span></div></div>
+        <div class="step"><div class="dot">5</div><div><b>Chart and alerts</b><span>Results become a chart, filtered by the user's role.</span></div></div>
+      </div>
+    </article>
+
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-filter="bi" aria-pressed="false">Data and BI</button>
+      <button class="chip" type="button" data-filter="ai" aria-pressed="false">AI and ML</button>
+      <button class="chip" type="button" data-filter="software" aria-pressed="false">Software and IoT</button>
+    </div>
+
+    <div class="grid" id="project-grid">
+      <article class="card" data-cat="ai software">
+        <div class="cat">AI &middot; Web</div>
+        <h3>Smart educational platform with AI chatbot</h3>
+        <p>A pedagogical chatbot that answers from course content using retrieval-augmented generation.</p>
+        <div class="tags"><span class="tag">Next.js</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Mistral</span><span class="tag">RAG</span></div>
+      </article>
+      <article class="card" data-cat="bi ai">
+        <div class="cat">Data &middot; ML</div>
+        <h3>End-to-end predictive analytics pipeline</h3>
+        <p>Automated ETL orchestration with machine learning feature engineering and automatic performance reporting.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Airflow</span><span class="tag">Scikit-learn</span></div>
+      </article>
+      <article class="card" data-cat="bi">
+        <div class="cat">BI</div>
+        <h3>Air traffic management dashboard</h3>
+        <p>An interactive dashboard for monitoring operational KPIs across complex, multi-dimensional flight data.</p>
+        <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Excel</span></div>
+      </article>
+      <article class="card" data-cat="ai">
+        <div class="cat">Deep learning</div>
+        <h3>Image classification on CIFAR-10</h3>
+        <p>Trained convolutional neural networks to 90.6% accuracy and added a web interface for real-world predictions.</p>
+        <div class="tags"><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Next.js</span></div>
+      </article>
+      <article class="card" data-cat="software">
+        <div class="cat">Cloud &middot; DevOps</div>
+        <h3>Cloud-deployed user management application</h3>
+        <p>A full-stack app with secured REST APIs and role management, shipped through a complete DevOps cycle.</p>
+        <div class="tags"><span class="tag">Spring Boot</span><span class="tag">Angular</span><span class="tag">Docker</span><span class="tag">Kubernetes</span></div>
+      </article>
+      <article class="card" data-cat="software">
+        <div class="cat">IoT &middot; Mobile</div>
+        <h3>Real-time accident detection system</h3>
+        <p>A mobile app with live monitoring and push alerts when onboard sensors detect abnormal motion.</p>
+        <div class="tags"><span class="tag">Arduino</span><span class="tag">React Native</span><span class="tag">Flutter</span></div>
+      </article>
+      <article class="card" data-cat="software bi">
+        <div class="cat">Web &middot; Reporting</div>
+        <h3>Platform for complaints and absences</h3>
+        <p>Modules for managing absences and complaints, with validation workflows and analytical tracking reports.</p>
+        <div class="tags"><span class="tag">ASP.NET MVC</span><span class="tag">C#</span><span class="tag">SQL Server</span><span class="tag">Angular</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head"><h2>Skills</h2></div>
+    <div class="skills">
+      <div><h3>Data engineering</h3><ul><li>ETL</li><li>Apache Airflow</li><li>SQL</li><li>Data modeling</li><li>Spark</li><li>Hadoop</li></ul></div>
+      <div><h3>BI and analytics</h3><ul><li>Power BI</li><li>DAX</li><li>Data visualization</li><li>Excel</li></ul></div>
+      <div><h3>AI and machine learning</h3><ul><li>Machine learning</li><li>Deep learning</li><li>LLM</li><li>RAG</li><li>Generative AI</li></ul></div>
+      <div><h3>Languages and frameworks</h3><ul><li>Python</li><li>SQL</li><li>Java</li><li>C#</li><li>Pandas</li><li>Scikit-learn</li><li>TensorFlow</li><li>Angular</li><li>React</li><li>Node.js</li><li>.NET</li></ul></div>
+      <div><h3>Databases and DevOps</h3><ul><li>MySQL</li><li>PostgreSQL</li><li>MongoDB</li><li>Docker</li><li>Kubernetes</li><li>Git</li><li>REST APIs</li></ul></div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="two">
+      <div>
+        <h3>Education</h3>
+        <div class="entry"><b>Engineering Degree, Computer Science (BI specialization)</b><span>ITBS, Mrezga, Tunisia &middot; 2024 &ndash; 2027, in progress</span></div>
+        <div class="entry"><b>Bachelor's Degree, Business Computing</b><span>FSEG Nabeul &middot; 2020 &ndash; 2024</span></div>
+      </div>
+      <div>
+        <h3>Certifications</h3>
+        <div class="entry"><b>Generative AI Foundations</b><span>AWS Academy Graduate &middot; May 2026</span></div>
+        <div class="entry"><b>Introduction to Data Engineering</b><span>IBM, via Coursera &middot; May 2026</span></div>
+        <div class="entry"><b>Introduction to Cybersecurity Careers</b><span>IBM, via Coursera &middot; May 2026</span></div>
+        <div class="entry"><b>Python for Data Science and SQL for Data Science</b><span>DataCamp &middot; May 2025</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-head">
+      <h2>Contact</h2>
+      <p>Open to data engineering, business intelligence and applied AI opportunities. Write to me or find me online.</p>
+    </div>
+    <div class="contact">
+      <div class="addr">
+        <code id="email-text">chaimadardouri2020@gmail.com</code>
+        <button class="btn" type="button" id="copy-email">Copy email</button>
+        <span id="copy-note" role="status" aria-live="polite" style="font-size:.88rem;color:var(--muted)"></span>
+      </div>
+      <div class="links">
+        <a class="btn" href="https://www.linkedin.com/in/chaima-dardouri" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/chaimadardouri2020-lab" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>Chaima Dardouri &middot; Data Engineer, Business Intelligence and Generative AI &middot; Hammamet, Tunisia</footer>
+</main>
+
+<script>
+(function(){
+  var chips=document.querySelectorAll('.chip');
+  var cards=document.querySelectorAll('#project-grid .card');
+  chips.forEach(function(chip){
+    chip.addEventListener('click',function(){
+      var f=chip.getAttribute('data-filter');
+      chips.forEach(function(c){c.setAttribute('aria-pressed',c===chip?'true':'false');});
+      cards.forEach(function(card){
+        var show=f==='all'||card.getAttribute('data-cat').split(' ').indexOf(f)!==-1;
+        card.hidden=!show;
+      });
+    });
+  });
+  var btn=document.getElementById('copy-email');
+  var note=document.getElementById('copy-note');
+  var txt=document.getElementById('email-text');
+  btn.addEventListener('click',function(){
+    var done=function(){note.textContent='Copied';setTimeout(function(){note.textContent='';},2000);};
+    var fallback=function(){
+      var r=document.createRange();r.selectNodeContents(txt);
+      var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+      note.textContent='Selected, press copy';
+    };
+    try{
+      navigator.clipboard.writeText(txt.textContent).then(done,fallback);
+    }catch(e){fallback();}
+  });
+})();
+</script>
+
+</body></html>
